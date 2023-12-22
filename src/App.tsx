@@ -2,7 +2,7 @@ import "./App.css";
 
 import Hero from "./custom_components/Hero";
 import Navbar from "./custom_components/navbar";
-import Signin from "./custom_components/signIn";
+import Signin from "./custom_components/Signin";
 
 import Signup from "./custom_components/Signup";
 import { Routes, Route } from "react-router-dom";
