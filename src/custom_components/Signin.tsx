@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { ReloadIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
-
+import PrivateRoutes from "./PrivateRoutes";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -37,6 +37,8 @@ const formSchema = z.object({
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
+  const [token, setToken] = useState("");
+  const [username, setUsername] = useState("");
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -47,7 +49,10 @@ const Signin = () => {
     await axios
       .post("https://toodo-api.onrender.com/app/v1/users/login", values)
       .then((response) => {
-        console.log(response);
+        // setToken(response.data.token);
+        // console.log(token, username);
+        localStorage.setItem("token", response.data.token);
+        console.log(response.data.token);
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -118,7 +123,9 @@ const Signin = () => {
                     Please wait
                   </Button>
                 ) : (
-                  <Button className="w-full  text-md">Submit</Button>
+                  <Link to="/dashboard">
+                    <Button className="w-full  text-md">Sign In</Button>
+                  </Link>
                 )}
                 {err && (
                   <div className=" w-full mx-auto">
