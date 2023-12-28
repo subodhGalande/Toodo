@@ -19,8 +19,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { ReloadIcon, Cross1Icon } from "@radix-ui/react-icons";
-import { Link } from "react-router-dom";
-import PrivateRoutes from "./PrivateRoutes";
+import { Link, useNavigate } from "react-router-dom";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -39,6 +39,8 @@ const Signin = () => {
   const [err, setErr] = useState("");
   const [token, setToken] = useState("");
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -49,13 +51,11 @@ const Signin = () => {
     await axios
       .post("https://toodo-api.onrender.com/app/v1/users/login", values)
       .then((response) => {
-        // setToken(response.data.token);
-        // console.log(token, username);
         localStorage.setItem("token", response.data.token);
-        console.log(response.data.token);
+        localStorage.setItem("username", response.data.userName);
+        navigate("/dashboard");
       })
       .catch((error) => {
-        console.log(error.response.data.message);
         setErr(error.response.data.message);
       });
     setIsLoading(false);
@@ -123,9 +123,7 @@ const Signin = () => {
                     Please wait
                   </Button>
                 ) : (
-                  <Link to="/dashboard">
-                    <Button className="w-full  text-md">Sign In</Button>
-                  </Link>
+                  <Button className="w-full text-md">Sign In</Button>
                 )}
                 {err && (
                   <div className=" w-full mx-auto">
