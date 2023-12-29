@@ -26,6 +26,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useState } from "react";
 import Wave from "./wave";
+import Navbar from "./navbar";
 
 const formSchema = z.object({
   user: z.string().email(),
@@ -66,8 +67,10 @@ const Signin = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center mt-12 ">
-        <Card className=" w-1/4 ">
+      {" "}
+      <Navbar />
+      <div className="w-full h-screen  mx-auto flex items-center justify-center  flex-col ">
+        <Card className=" w-1/4 bg-secondary">
           <CardHeader>
             <CardTitle className="text-3xl">Sign In</CardTitle>
             <CardDescription className="text-sm font-medium">
@@ -85,13 +88,13 @@ const Signin = () => {
                   name="user"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className=" text-md text-white ">
+                      <FormLabel className=" text-md text-foreground ">
                         Email
                       </FormLabel>
                       <FormControl>
                         <Input placeholder="enter email address" {...field} />
                       </FormControl>
-                      <FormMessage className="text-sm text-purple-400 " />
+                      <FormMessage className="text-sm text-destructive " />
                     </FormItem>
                   )}
                 />
@@ -100,7 +103,7 @@ const Signin = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem className="pb-2">
-                      <FormLabel className=" text-md text-white ">
+                      <FormLabel className=" text-md text-foreground ">
                         Password
                       </FormLabel>
                       <FormControl>
@@ -110,7 +113,7 @@ const Signin = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-sm  text-purple-400 " />
+                      <FormMessage className="text-sm  text-destructive " />
                     </FormItem>
                   )}
                 />
@@ -138,7 +141,9 @@ const Signin = () => {
                 )}
               </form>
             </Form>
-            <h2 className=" mx-auto text-center mt-5">Or</h2>
+            <h2 className=" mx-auto font-bold text-foreground text-center mt-5">
+              Or
+            </h2>
             <Link to="/Signup">
               {" "}
               <Button
@@ -151,7 +156,6 @@ const Signin = () => {
           </CardContent>
         </Card>
       </div>
-
       {/* <div className=" h-40 mx-auto w-96 flex flex-row border border-solid border-gray-10 overflow-hidden">
         {" "}
         <div>
@@ -162,10 +166,6 @@ const Signin = () => {
         </div>{" "}
         <img className=" relative inset-10 rounded-3xl " src={one} alt="" />{" "}
       </div> */}
-
-      <footer className=" bottom-0  ">
-        <Wave />
-      </footer>
     </>
   );
 };

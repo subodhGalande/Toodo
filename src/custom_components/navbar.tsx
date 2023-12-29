@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <nav className=" flex justify-between mt-6 px-6">
+      <nav className="absolute mt-10 flex mx-auto justify-between px-6 w-full">
         <div>
           <h1 className=" font-black text-3xl text-primary "> TOODO </h1>
         </div>
-        <div className="flex gap-5 text-stone-300">
+        <div className="flex gap-5 text-foreground">
           {" "}
           <Link to="/">
             {" "}

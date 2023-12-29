@@ -16,7 +16,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Wave from "./wave";
+
 import { useForm } from "react-hook-form";
 import { ReloadIcon, EnvelopeOpenIcon } from "@radix-ui/react-icons";
 
@@ -26,6 +26,7 @@ import axios from "axios";
 import { useState } from "react";
 
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import Navbar from "./navbar";
 
 const formSchema = z
   .object({
@@ -76,8 +77,9 @@ const Signup = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center mt-12 ">
-        <Card className=" w-1/4 ">
+      <Navbar />
+      <div className=" w-full h-screen mx-auto flex items-center justify-center  flex-col  ">
+        <Card className=" w-1/4 bg-secondary ">
           <CardHeader>
             <CardTitle className="text-3xl">Create an account</CardTitle>
             <CardDescription className="text-sm font-medium">
@@ -95,13 +97,13 @@ const Signup = () => {
                   name="userName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className=" text-md text-white ">
+                      <FormLabel className=" text-md text-foreground ">
                         Username
                       </FormLabel>
                       <FormControl>
                         <Input placeholder="enter username" {...field} />
                       </FormControl>
-                      <FormMessage className="text-sm text-purple-400 " />
+                      <FormMessage className="text-sm text-destructive " />
                     </FormItem>
                   )}
                 />
@@ -111,13 +113,13 @@ const Signup = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className=" text-md text-white ">
+                      <FormLabel className=" text-md text-foreground ">
                         Email
                       </FormLabel>
                       <FormControl>
                         <Input placeholder="enter email address" {...field} />
                       </FormControl>
-                      <FormMessage className="text-sm text-purple-400 " />
+                      <FormMessage className="text-sm text-destructive " />
                     </FormItem>
                   )}
                 />
@@ -126,7 +128,7 @@ const Signup = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className=" text-md text-white ">
+                      <FormLabel className=" text-md text-foreground ">
                         Password
                       </FormLabel>
                       <FormControl>
@@ -136,7 +138,7 @@ const Signup = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-sm text-purple-400 " />
+                      <FormMessage className="text-sm text-destructive " />
                     </FormItem>
                   )}
                 />
@@ -145,7 +147,7 @@ const Signup = () => {
                   name="confirmPass"
                   render={({ field }) => (
                     <FormItem className="pb-4">
-                      <FormLabel className=" text-md text-white ">
+                      <FormLabel className=" text-md text-foreground ">
                         Confirm password
                       </FormLabel>
                       <FormControl>
@@ -155,7 +157,7 @@ const Signup = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-sm text-purple-400 " />
+                      <FormMessage className="text-sm text-destructive " />
                     </FormItem>
                   )}
                 />
@@ -196,9 +198,6 @@ const Signup = () => {
             </Form>
           </CardContent>
         </Card>
-      </div>
-      <div className=" -mt-8 max-w-full max-h-60 ">
-        <Wave />
       </div>
     </>
   );
