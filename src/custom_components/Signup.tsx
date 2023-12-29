@@ -78,7 +78,7 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <div className=" w-full h-screen mx-auto flex items-center justify-center  flex-col  ">
+      <div className="  w-full h-screen mx-auto flex items-center justify-center  flex-col  ">
         <Card className=" w-1/4 bg-secondary ">
           <CardHeader>
             <CardTitle className="text-3xl">Create an account</CardTitle>
