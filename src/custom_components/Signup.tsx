@@ -78,11 +78,13 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <div className="  w-full h-screen mx-auto flex items-center justify-center  flex-col  ">
+      <div className=" pt-10  w-full h-screen mx-auto flex items-center justify-center  flex-col  ">
         <Card className=" w-1/4 bg-secondary ">
           <CardHeader>
-            <CardTitle className="text-3xl">Create an account</CardTitle>
-            <CardDescription className="text-sm font-medium">
+            <CardTitle className="text-3xl font-grotesque">
+              Create an account
+            </CardTitle>
+            <CardDescription className=" font-grotesque text-sm font-medium">
               Enter your email below to create your account
             </CardDescription>
           </CardHeader>
@@ -103,7 +105,7 @@ const Signup = () => {
                       <FormControl>
                         <Input placeholder="enter username" {...field} />
                       </FormControl>
-                      <FormMessage className="text-sm text-destructive " />
+                      <FormMessage className="text-sm text-primary " />
                     </FormItem>
                   )}
                 />
@@ -119,7 +121,7 @@ const Signup = () => {
                       <FormControl>
                         <Input placeholder="enter email address" {...field} />
                       </FormControl>
-                      <FormMessage className="text-sm text-destructive " />
+                      <FormMessage className="text-sm text-primary " />
                     </FormItem>
                   )}
                 />
@@ -138,7 +140,7 @@ const Signup = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-sm text-destructive " />
+                      <FormMessage className="text-sm text-primary " />
                     </FormItem>
                   )}
                 />
@@ -157,7 +159,7 @@ const Signup = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-sm text-destructive " />
+                      <FormMessage className="text-sm text-primary " />
                     </FormItem>
                   )}
                 />
@@ -170,7 +172,9 @@ const Signup = () => {
                     Please wait
                   </Button>
                 ) : (
-                  <Button className="w-full text-md">Submit</Button>
+                  <Button className="w-full dark:text-foreground  text-md">
+                    Submit
+                  </Button>
                 )}
                 {res && (
                   <div className=" w-full mx-auto">

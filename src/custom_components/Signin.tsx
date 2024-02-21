@@ -25,7 +25,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useState } from "react";
-import Wave from "./wave";
+
 import Navbar from "./navbar";
 
 const formSchema = z.object({
@@ -38,8 +38,7 @@ const formSchema = z.object({
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
-  const [token, setToken] = useState("");
-  const [username, setUsername] = useState("");
+
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -72,8 +71,8 @@ const Signin = () => {
       <div className="w-full h-screen  mx-auto flex items-center justify-center  flex-col ">
         <Card className=" w-1/4 bg-secondary">
           <CardHeader>
-            <CardTitle className="text-3xl">Sign In</CardTitle>
-            <CardDescription className="text-sm font-medium">
+            <CardTitle className="text-3xl font-grotesque">Sign In</CardTitle>
+            <CardDescription className="text-sm font-grotesque font-medium">
               Continue with your account
             </CardDescription>
           </CardHeader>
@@ -94,7 +93,7 @@ const Signin = () => {
                       <FormControl>
                         <Input placeholder="enter email address" {...field} />
                       </FormControl>
-                      <FormMessage className="text-sm text-destructive " />
+                      <FormMessage className="text-sm text-primary " />
                     </FormItem>
                   )}
                 />
@@ -113,7 +112,7 @@ const Signin = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-sm  text-destructive " />
+                      <FormMessage className="text-sm  text-primary " />
                     </FormItem>
                   )}
                 />
@@ -126,7 +125,9 @@ const Signin = () => {
                     Please wait
                   </Button>
                 ) : (
-                  <Button className="w-full text-md">Sign In</Button>
+                  <Button className="w-full dark:text-foreground text-md">
+                    Sign In
+                  </Button>
                 )}
                 {err && (
                   <div className=" w-full mx-auto">
@@ -148,9 +149,9 @@ const Signin = () => {
               {" "}
               <Button
                 variant={"outline"}
-                className="w-full border-primary font-bold border-2 mt-5 text-primary text-md"
+                className="w-full dark:border-foreground font-bold border-2 mt-5 border-primary text-primary dark:text-foreground text-md"
               >
-                SIGN UP
+                Sign up
               </Button>
             </Link>
           </CardContent>

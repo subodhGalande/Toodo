@@ -1,4 +1,5 @@
 import "./App.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import Hero from "./custom_components/Hero";
 
@@ -13,14 +14,16 @@ import PrivateRoutes from "./custom_components/PrivateRoutes";
 function App() {
   return (
     <>
-      <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-        <Route path="/" element={<Hero />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-      </Routes>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+          <Route path="/" element={<Hero />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+        </Routes>
+      </ThemeProvider>
     </>
   );
 }
