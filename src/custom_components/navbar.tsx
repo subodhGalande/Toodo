@@ -31,7 +31,9 @@ const Navbar = () => {
             </Button>
           </Link>
           <Link to="/signup">
-            <Button className=" text-base font-bold">SIGN UP</Button>
+            <Button className=" text-base  dark:text-foreground font-bold">
+              Sign up
+            </Button>
           </Link>{" "}
         </div>
         <ModeToggle />
